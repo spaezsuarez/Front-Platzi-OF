@@ -5,7 +5,7 @@ export class Question{
     private createdAt:Date;
     private icon:String;
 
-    public getTitile():String{
+    public getTitle():String{
         return this.title;
     }
 

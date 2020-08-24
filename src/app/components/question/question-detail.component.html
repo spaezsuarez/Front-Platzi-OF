@@ -4,7 +4,7 @@
         <i mat-list-icon class="{{question.getIcon()}} icon" ></i>
       </div>
       <mat-card-title>
-          <h2>{{question.getTitile()}}</h2>
+          <h2>{{question.getTitle()}}</h2>
       </mat-card-title>
       <mat-card-subtitle>
             <small>Sergio Paez ~ {{question.getCreatetionDate() | amLocale:'es' | amTimeAgo}}</small>
@@ -37,4 +37,5 @@
             
         </li>
     </ul>
+    <answer-form></answer-form>
 </div>
