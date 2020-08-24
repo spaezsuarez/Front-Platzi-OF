@@ -4,14 +4,15 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 //Modulos de Material
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './resources/material.module';
+import { MaterialModule } from './modules/material.module';
 import 'hammerjs';
 //Componentes
 import { AppComponent } from './app.component';
-
+import { QuestionDetailComponent } from './components/question/question-detail.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    QuestionDetailComponent
   ],
   imports: [
     BrowserModule,

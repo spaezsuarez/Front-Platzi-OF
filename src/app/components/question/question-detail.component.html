@@ -1,0 +1,23 @@
+<mat-card>
+    <mat-card-header>
+      <div mat-card-avatar>
+        <i mat-list-icon class="{{question.getIcon()}} icon" ></i>
+      </div>
+      <mat-card-title>
+          <h2>{{question.getTitile()}}</h2>
+      </mat-card-title>
+      <mat-card-subtitle>
+            <small>Sergio Paez ~ {{question.getCreatetionDate().toLocaleTimeString()}}</small>
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+        <p>
+            {{question.getDescription()}}
+        </p>
+    </mat-card-content>
+
+    <mat-card-footer>
+        <button mat-button><mat-icon>check_circle</mat-icon></button>
+    </mat-card-footer>
+</mat-card>

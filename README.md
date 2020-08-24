@@ -1,6 +1,6 @@
 # FrontPlatziOF
 
-Proyecto del curso de MEAN (Mongo Express Angular NodeJS) 2017 de platzi
+Front-end del proyecto del curso de MEAN (Mongo Express Angular NodeJS) 2017 de platzi
 
 ## Installation
 
