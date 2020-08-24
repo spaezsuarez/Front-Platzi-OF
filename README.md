@@ -4,7 +4,7 @@ Proyecto del curso de MEAN (Mongo Express Angular NodeJS) 2017 de platzi
 
 ## Installation
 
-Tener instalado NodeJS y el gestor de dependencias de npm, una vez descargado el proeyecto ejectutar `npm install``para instalar las dependencias del proyecto
+Tener instalado NodeJS y el gestor de dependencias de npm, una vez descargado el proeyecto ejectutar `npm install` para instalar las dependencias del proyecto
 
 ## Development server
 
