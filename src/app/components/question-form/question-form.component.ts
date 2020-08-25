@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Question } from '../../models/question.model';
 import icons from '../../resources/icons';
 import { Icon } from '../../models/abstract/icon.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-question-form',
@@ -13,7 +14,7 @@ export class QuestionFormComponent implements OnInit {
 
   private icons: Icon[] = icons;
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   public getIcons(): Icon[] {
     return this.icons;
@@ -36,6 +37,7 @@ export class QuestionFormComponent implements OnInit {
   public onSumbit(form: NgForm) {
     const pregunta = new Question(form.value.title, form.value.desc, new Date(), form.value.icon);
     console.table(pregunta);
+    this.router.navigate(['/questions']);
   }
 
 }
