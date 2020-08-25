@@ -4,7 +4,7 @@ import { NgForm } from '@angular/forms';
 @Component({
     selector:'answer-form',
     templateUrl:'answer-form.component.html',
-    styleUrls:['./answer-form.component.scss']
+    styleUrls:[`./answer-form.component.scss`]
 })
 
 export class AnswerFormComponent implements OnInit{

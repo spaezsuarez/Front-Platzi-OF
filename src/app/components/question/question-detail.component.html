@@ -26,16 +26,46 @@
     <h3>
         Respuestas
     </h3>
-    <ul class="answers-list">
+    <ul class="answers-list" *ngIf = "question.getRespuestas().length > 0" >
         <li>
             <h5>David Suarez ~
-                <small>Hace 3 horas</small>
+                <small>Hace 6 horas</small>
             </h5>
             <p class="description">
                 La respuesta es que eres pendejo xddd
             </p>
+        </li>
+
+        <li>
+            <h5>Ester Ramirez ~
+                <small>Hace unos segundos</small>
+            </h5>
+            <p class="description">
+                NO seas asi WEE :v
+            </p>
+            
+        </li>
+
+        <li>
+            <h5>Eldestroyer ~
+                <small>Hace unos segundos</small>
+            </h5>
+            <p class="description">
+                Vale vrg
+            </p>
+            
+        </li>
+
+        <li>
+            <h5>Eldestroyer ~
+                <small>Hace unos segundos</small>
+            </h5>
+            <p class="description">
+                El alva majo no estaria orgulloso :v
+            </p>
             
         </li>
     </ul>
-    <answer-form></answer-form>
+    <p *ngIf = "question.getRespuestas().length === 0">Se el primero en compartir tu respuesta</p>
+    <answer-form class="answer-form"></answer-form>
 </div>
