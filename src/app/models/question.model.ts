@@ -2,8 +2,8 @@ export class Question{
 
     private title:String;
     private description:String;
-    private createdAt:Date;
-    private icon:String;
+    private createdAt?:Date;
+    private icon?:String;
 
     public getTitle():String{
         return this.title;
@@ -26,6 +26,5 @@ export class Question{
         this.description = description;
         this.createdAt = createdAt;
         this.icon = icon;
-
     }
 }
