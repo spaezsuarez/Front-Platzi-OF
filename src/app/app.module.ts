@@ -12,12 +12,15 @@ import 'hammerjs';
 import { AppComponent } from './app.component';
 import { QuestionDetailComponent } from './components/question/question-detail.component';
 import { AnswerFormComponent } from './components/answer/answer-form.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     QuestionDetailComponent,
-    AnswerFormComponent
+    AnswerFormComponent,
+    RegisterComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -30,4 +33,5 @@ import { AnswerFormComponent } from './components/answer/answer-form.component';
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
