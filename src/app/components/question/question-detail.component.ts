@@ -9,7 +9,7 @@ import { Question } from '../../models/question.model';
 
 export class QuestionDetailComponent{
 
-    question:Question = new Question(
+    pregunta:Question = new Question(
         'Esta es una nueva pregunta sobre C#',
         'Tengo una duda con una aplicacion hecha en C# ....',
         new Date(),

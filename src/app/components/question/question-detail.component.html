@@ -1,19 +1,19 @@
 <mat-card>
     <mat-card-header>
       <div mat-card-avatar>
-        <i mat-list-icon class="{{question.getIcon()}} icon" ></i>
+        <i mat-list-icon class="{{pregunta.getIcon()}} icon" ></i>
       </div>
       <mat-card-title>
-          <h2>{{question.getTitle()}}</h2>
+          <h2>{{pregunta.getTitle()}}</h2>
       </mat-card-title>
       <mat-card-subtitle>
-            <small>Sergio Paez ~ {{question.getCreatetionDate() | amLocale:'es' | amTimeAgo}}</small>
+            <small>Sergio Paez ~ {{pregunta.getCreatetionDate() | amLocale:'es' | amTimeAgo}}</small>
       </mat-card-subtitle>
     </mat-card-header>
 
     <mat-card-content>
         <p>
-            {{question.getDescription()}}
+            {{pregunta.getDescription()}}
         </p>
     </mat-card-content>
 
@@ -26,46 +26,17 @@
     <h3>
         Respuestas
     </h3>
-    <ul class="answers-list" *ngIf = "question.getRespuestas().length > 0" >
-        <li>
-            <h5>David Suarez ~
-                <small>Hace 6 horas</small>
+    <ul class="answers-list" *ngIf = "pregunta.getRespuestas().length > 0" >
+        <li *ngFor="let respuesta of pregunta.getRespuestas()">
+            <h5>{{respuesta.getUser().getFirstName()}} {{respuesta.getUser().getLastName()}} ~
+                <small>{{respuesta.getCreateDate() | amLocale:'es' | amTimeAgo}}</small>
             </h5>
             <p class="description">
-                La respuesta es que eres pendejo xddd
+                {{respuesta.getDescripcion()}}
             </p>
         </li>
 
-        <li>
-            <h5>Ester Ramirez ~
-                <small>Hace unos segundos</small>
-            </h5>
-            <p class="description">
-                NO seas asi WEE :v
-            </p>
-            
-        </li>
-
-        <li>
-            <h5>Eldestroyer ~
-                <small>Hace unos segundos</small>
-            </h5>
-            <p class="description">
-                Vale vrg
-            </p>
-            
-        </li>
-
-        <li>
-            <h5>Eldestroyer ~
-                <small>Hace unos segundos</small>
-            </h5>
-            <p class="description">
-                El alva majo no estaria orgulloso :v
-            </p>
-            
-        </li>
     </ul>
-    <p *ngIf = "question.getRespuestas().length === 0">Se el primero en compartir tu respuesta</p>
-    <answer-form class="answer-form"></answer-form>
+    <p *ngIf = "pregunta.getRespuestas().length === 0">Se el primero en compartir tu respuesta</p>
+    <answer-form [pregunta] = "pregunta" class="answer-form"></answer-form>
 </div>

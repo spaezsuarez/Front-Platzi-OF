@@ -1,5 +1,8 @@
-import { Component,OnInit} from '@angular/core';
+import { Component, Input} from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Answer } from '../../models/answer.mode';
+import { Question } from '../../models/question.model';
+import { User } from 'src/app/models/user.model';
 
 @Component({
     selector:'answer-form',
@@ -7,18 +10,22 @@ import { NgForm } from '@angular/forms';
     styleUrls:[`./answer-form.component.scss`]
 })
 
-export class AnswerFormComponent implements OnInit{
+export class AnswerFormComponent{
 
-    public dataForm:any = {
-        description:""
-    };
+    @Input() private pregunta:Question;
 
     public onSumbit(form:NgForm){
-        console.table(form.value.description);
+
+        const answer = new Answer(form.value.description,
+            this.pregunta,new Date(),new User('David','Suarez'));
+
+        this.pregunta.getRespuestas().unshift(answer);
+        form.reset();
     }
 
-    ngOnInit(){
-
+    public getPregunta():Question{
+        return this.pregunta;
     }
+
 
 }
