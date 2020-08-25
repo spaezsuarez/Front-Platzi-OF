@@ -13,13 +13,17 @@ import { AppComponent } from './app.component';
 import { QuestionDetailComponent } from './components/question/question-detail.component';
 import { AnswerFormComponent } from './components/answer/answer-form.component';
 import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { QuestionListComponent } from './components/question-list/question-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     QuestionDetailComponent,
     AnswerFormComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent,
+    QuestionListComponent
     
   ],
   imports: [

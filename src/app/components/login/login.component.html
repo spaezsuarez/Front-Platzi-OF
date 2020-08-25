@@ -1,0 +1,10 @@
+<form class="container" [formGroup]="getForm()" (ngSubmit)="onSumbit()">
+    <mat-form-field >
+        <input matInput type="email" placeholder="email" formControlName="email"/>
+    </mat-form-field>   
+    <mat-form-field>
+        <input matInput type="password" placeholder="contraseña" formControlName="password"/>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="accent" class="btn"type="submit">Ingresar</button>
+</form>
