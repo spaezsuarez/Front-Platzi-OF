@@ -1,1 +1,19 @@
-<p>register works!</p>
+<form class="container" [formGroup]="formulario" (ngSubmit)="onSumbit()">
+    <mat-form-field >
+        <input matInput type="email" placeholder="email" formControlName="email"/>
+    </mat-form-field>   
+    <mat-form-field>
+        <input matInput type="text" placeholder="nombre" formControlName="firstName"/>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="text" placeholder="apellido" formControlName="lastName"/>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="password" placeholder="contraseña" formControlName="password"/>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="password" placeholder="repita la contraseña" formControlName="passwordDos"/>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="accent" class="btn"type="submit">Registrarse</button>
+</form>

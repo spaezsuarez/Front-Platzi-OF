@@ -17,7 +17,7 @@ export class AnswerFormComponent{
     public onSumbit(form:NgForm){
 
         const answer = new Answer(form.value.description,
-            this.pregunta,new Date(),new User('David','Suarez'));
+            this.pregunta,new Date(),new User('David','Suarez',null,null));
 
         this.pregunta.getRespuestas().unshift(answer);
         form.reset();
