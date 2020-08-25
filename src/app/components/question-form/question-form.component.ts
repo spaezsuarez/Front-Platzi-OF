@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Question } from '../../models/question.model';
 import icons from '../../resources/icons';
+import { Icon } from '../../models/abstract/icon.interface';
 
 @Component({
   selector: 'app-question-form',
@@ -10,11 +11,11 @@ import icons from '../../resources/icons';
 })
 export class QuestionFormComponent implements OnInit {
 
-  private icons: Object[] = icons;
+  private icons: Icon[] = icons;
 
   constructor() { }
 
-  public getIcons(): Object[] {
+  public getIcons(): Icon[] {
     return this.icons;
   }
 
