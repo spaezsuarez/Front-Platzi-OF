@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule,ReactiveFormsModule} from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module';
 import { MomentModule } from 'ngx-moment';
+import { HttpClientModule } from '@angular/common/http';
 //Modulos de Material
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material.module';
@@ -16,6 +17,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { QuestionListComponent } from './components/question-list/question-list.component';
 import { QuestionFormComponent } from './components/question-form/question-form.component';
+//Servicios
+import { QuestionService } from './services/question.service';
 
 @NgModule({
   declarations: [
@@ -35,9 +38,10 @@ import { QuestionFormComponent } from './components/question-form/question-form.
     MaterialModule,
     MomentModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [QuestionService],
   bootstrap: [AppComponent]
 })
 

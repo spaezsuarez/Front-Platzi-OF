@@ -1,0 +1,24 @@
+import  { Question } from '../models/question.model';
+export class Parser{
+
+    public static toQuestion(object:any):Question{
+        let pregunta:Question = null;
+        pregunta = new Question(object.title,object.description,object.createdAt,object.icon);
+        return pregunta;
+    }
+
+    public static toArrayQuestions(list:any):Question[]{
+        let pregunta:Question = null;
+        let preguntas:Question[] = [];
+
+        for(let i=0; i <list.questions.length; i++){
+
+            pregunta = new Question(list.questions[i].title,list.questions[i].description,
+                                    list.questions[i].createdAt,list.questions[i].icon);
+
+            preguntas.unshift(pregunta);
+        }
+       
+        return preguntas; 
+    }
+}

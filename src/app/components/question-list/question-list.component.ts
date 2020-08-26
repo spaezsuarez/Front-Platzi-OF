@@ -1,17 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Question } from '../../models/question.model';
-
-const pregunta: Question = new Question(
-  'Esta es una nueva pregunta sobre C#',
-  'Tengo una duda con de como usar C# CON UNITY',
-  new Date(),
-  'devicon-csharp-plain colored');
-
-const preguntaDos: Question = new Question(
-  'ANDROID STUDIO',
-  'Como recupero la clave de mi aplicacion?',
-  new Date(),
-  null);
+import { QuestionService } from '../../services/question.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-question-list',
@@ -20,15 +10,25 @@ const preguntaDos: Question = new Question(
 })
 export class QuestionListComponent implements OnInit {
 
-  private questions: Question[] = [pregunta,preguntaDos];
+  private questions: Question[];
 
-  constructor() { }
+  constructor(private questionService:QuestionService,private router:Router) { }
 
-  public ngOnInit(): void {
+  public setQuestions():void{
+    this.questionService.getQuestions()
+    .then((data) => {
+      this.questions = data;
+    }).catch(() => {
+      this.router.navigate(['/login']);
+    });
   }
 
   public getQuestions(): Question[] {
     return this.questions;
+  }
+
+  public ngOnInit(): void {
+    this.setQuestions();
   }
 
 }
