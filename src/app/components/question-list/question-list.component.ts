@@ -11,12 +11,14 @@ import { Router } from '@angular/router';
 export class QuestionListComponent implements OnInit {
 
   private questions: Question[];
+  private loading:boolean = true;
 
   constructor(private questionService:QuestionService,private router:Router) { }
 
   public setQuestions():void{
     this.questionService.getQuestions()
     .then((data) => {
+      this.loading = false;
       this.questions = data;
     }).catch(() => {
       this.router.navigate(['/login']);
@@ -25,6 +27,10 @@ export class QuestionListComponent implements OnInit {
 
   public getQuestions(): Question[] {
     return this.questions;
+  }
+
+  public getLoadingStatus():boolean{
+    return this.loading;
   }
 
   public ngOnInit(): void {

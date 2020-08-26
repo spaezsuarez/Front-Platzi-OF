@@ -2,11 +2,11 @@ import { Answer } from './answer.mode';
 
 export class Question{
 
-    private id?:String;
+    private id:String;
     private title:String;
     private description:String;
-    private createdAt?:Date;
-    private icon?:String;
+    private createdAt:Date;
+    private icon:String;
     private respuestas:Answer[];
 
     public getId():String{

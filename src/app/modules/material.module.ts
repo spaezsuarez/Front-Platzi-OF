@@ -7,10 +7,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 const modules = [MatToolbarModule,MatIconModule,MatCardModule,
                 MatInputModule,MatButtonModule,MatListModule,
-                MatGridListModule,MatRadioModule];
+                MatGridListModule,MatRadioModule,MatProgressSpinnerModule];
 
 @NgModule({
     imports:modules,

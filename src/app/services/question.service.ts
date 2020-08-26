@@ -15,7 +15,6 @@ export class QuestionService{
         return new Promise((resolve,reject) => {
             this.htpp.get(urljoin(environment.api_url,'questions')).toPromise()
                 .then((response) => {
-                    console.log(response);
                     resolve(Parser.toArrayQuestions(response));
                 }).catch((error) => {
                     reject(error);
@@ -23,11 +22,11 @@ export class QuestionService{
         });
     }
 
-    public getQuestion(id:any):Promise<Question[]>{
+    public getQuestion(id:any):Promise<Question>{
         return new Promise((resolve,reject) => {
-            this.htpp.get(urljoin(environment.api_url,'questions',id)).toPromise()
+            this.htpp.get(urljoin(environment.api_url,'questions','detail',id)).toPromise()
                 .then((data) => {
-                    resolve(data as Question[]);
+                    resolve(Parser.toQuestion(data));
                 }).catch((error) => {
                     reject(error);
                 });

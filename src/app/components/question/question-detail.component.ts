@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component , OnInit } from '@angular/core';
 import { Question } from '../../models/question.model';
+import { QuestionService } from '../../services/question.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector:'app-question-detail',
@@ -7,11 +9,25 @@ import { Question } from '../../models/question.model';
     styleUrls: ['./question-detail.component.scss']
 })
 
-export class QuestionDetailComponent{
+export class QuestionDetailComponent implements OnInit{
 
-    pregunta:Question = new Question(
-        'Esta es una nueva pregunta sobre C#',
-        'Tengo una duda con una aplicacion hecha en C# ....',
-        new Date(),
-        'devicon-csharp-plain colored');
+    public pregunta:Question;
+
+    constructor(private questionService:QuestionService,private route:ActivatedRoute){}
+
+    public ngOnInit():void{
+
+        let id;
+        this.route.params.forEach((values) => {
+            id = values.id;
+        });
+        this.questionService.getQuestion(id)
+            .then((data) => {
+                this.pregunta = data;
+            }).catch((error) => {
+                console.error(error);
+        });
+    }
+
+    
 }

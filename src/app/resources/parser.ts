@@ -1,9 +1,11 @@
 import  { Question } from '../models/question.model';
+
 export class Parser{
 
     public static toQuestion(object:any):Question{
         let pregunta:Question = null;
-        pregunta = new Question(object.title,object.description,object.createdAt,object.icon);
+        pregunta = new Question(object.data.title,object.data.description,
+                                object.data.createdAt,object.data.icon);
         return pregunta;
     }
 

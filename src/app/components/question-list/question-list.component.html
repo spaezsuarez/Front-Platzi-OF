@@ -1,10 +1,19 @@
-<mat-list>
-    <div mat-subheader><h2>Preguntas</h2></div>
-    <mat-list-item *ngFor="let question of getQuestions()" routerLink="/questions/1">
-        <mat-icon mat-list-icon *ngIf="question.getIcon() === null" class="material-icons icon">perm_scan_wifi</mat-icon>
-        <mat-icon mat-list-icon *ngIf="question.getIcon() !== null" class="{{question.getIcon()}} icon"></mat-icon>
-        <div mat-line>{{question.getTitle()}}</div>
-        <div mat-line><p>{{question.getRespuestas().length}} respuestas ~ {{question.getCreatetionDate() | amLocale:'es' | amTimeAgo}}</p></div>
-    </mat-list-item>
-    <button mat-fab color="accent" class="btn" routerLink="/sub_question">+</button>
-</mat-list>
+<div *ngIf="!getLoadingStatus()">
+    <mat-list>
+        <div mat-subheader>
+            <h2>Preguntas</h2>
+        </div>
+        <mat-list-item *ngFor="let question of getQuestions()" routerLink="/questions/{{question.getId()}}">
+            <mat-icon mat-list-icon *ngIf="question.getIcon() === null" class="material-icons icon">perm_scan_wifi
+            </mat-icon>
+            <mat-icon mat-list-icon *ngIf="question.getIcon() !== null" class="{{question.getIcon()}} icon">
+            </mat-icon>
+            <div mat-line>{{question.getTitle()}}</div>
+            <div mat-line>
+                <p>{{question.getRespuestas().length}} respuestas ~
+                    {{question.getCreatetionDate() | amLocale:'es' | amTimeAgo}}</p>
+            </div>
+        </mat-list-item>
+        <button mat-fab color="accent" class="btn" routerLink="/sub_question">+</button>
+    </mat-list>
+</div>
