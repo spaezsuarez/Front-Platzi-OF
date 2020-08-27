@@ -20,7 +20,8 @@ export class QuestionListComponent implements OnInit {
     .then((data) => {
       this.loading = false;
       this.questions = data;
-    }).catch(() => {
+    }).catch((error) => {
+      console.log(error);
       this.router.navigate(['/login']);
     });
   }
@@ -35,6 +36,11 @@ export class QuestionListComponent implements OnInit {
 
   public ngOnInit(): void {
     this.setQuestions();
+  }
+
+  public viewDetail(question:Question):void{
+    console.table(question);
+    this.router.navigate([`/questions/${question.getId()}`]);
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component , OnInit } from '@angular/core';
-import { Question } from '../../models/question.model';
+import { Question }  from '../../models/question.model';
 import { QuestionService } from '../../services/question.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 
 export class QuestionDetailComponent implements OnInit{
 
-    public pregunta:Question;
+    public pregunta:Question = null;
 
     constructor(private questionService:QuestionService,private route:ActivatedRoute){}
 
@@ -20,6 +20,7 @@ export class QuestionDetailComponent implements OnInit{
         let id;
         this.route.params.forEach((values) => {
             id = values.id;
+            console.log(id);
         });
         this.questionService.getQuestion(id)
             .then((data) => {
@@ -27,6 +28,10 @@ export class QuestionDetailComponent implements OnInit{
             }).catch((error) => {
                 console.error(error);
         });
+    }
+
+    public getIconClass():String{
+        return this.pregunta.getIcon();
     }
 
     

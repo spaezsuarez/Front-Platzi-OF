@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-import { Question } from '../models/question.model';
+import { Question }  from '../models/question.model';
 import { environment } from '../../environments/environment';
 import urljoin from 'url-join';
 import { Parser } from '../resources/parser';
-import { Observable } from 'rxjs';
-import { map,catchError } from 'rxjs/operators'
 import { Router } from '@angular/router';
 
 @Injectable()

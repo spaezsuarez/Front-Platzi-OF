@@ -29,4 +29,8 @@ export class User{
         return this.password;
     }
 
+    public getFullName():String{
+        return `${this.firstName} ${this.lastName}`;
+    }
+
 }

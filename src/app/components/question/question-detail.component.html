@@ -7,7 +7,7 @@
           <h2>{{pregunta.getTitle()}}</h2>
       </mat-card-title>
       <mat-card-subtitle>
-            <small>Sergio Paez ~ {{pregunta.getCreatetionDate() | amLocale:'es' | amTimeAgo}}</small>
+            <small>{{pregunta.getUser().getFullName()}} ~ {{pregunta.getCreatetionDate() | amLocale:'es' | amTimeAgo}}</small>
       </mat-card-subtitle>
     </mat-card-header>
 
@@ -28,7 +28,7 @@
     </h3>
     <ul class="answers-list" *ngIf = "pregunta.getRespuestas().length > 0" >
         <li *ngFor="let respuesta of pregunta.getRespuestas()">
-            <h5>{{respuesta.getUser().getFirstName()}} {{respuesta.getUser().getLastName()}} ~
+            <h5>{{respuesta.getUser().getFullName()}} ~
                 <small>{{respuesta.getCreateDate() | amLocale:'es' | amTimeAgo}}</small>
             </h5>
             <p class="description">

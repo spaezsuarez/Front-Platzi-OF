@@ -1,9 +1,9 @@
 import { Answer } from './answer.mode';
-import { User } from './user.model';
+import  { User }  from './user.model';
 
-export class Question{
+export class  Question{
 
-    private id:String;
+    private id?:number;
     private title:String;
     private description:String;
     private createdAt:Date;
@@ -11,7 +11,7 @@ export class Question{
     private user:User;
     private respuestas:Answer[];
 
-    public getId():String{
+    public getId():number{
         return this.id;
     }
 
@@ -39,8 +39,8 @@ export class Question{
         return this.user;
     }
 
-    constructor(title:String,description:String,createdAt:Date,icon:String){
-        this.id = '1';
+    constructor(id:number,title:String,description:String,createdAt:Date,icon:String){
+        this.id = id;
         this.title = title;
         this.description = description;
         this.createdAt = createdAt;

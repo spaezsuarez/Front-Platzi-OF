@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Question } from '../../models/question.model';
+import { Question }   from '../../models/question.model';
 import icons from '../../resources/icons';
 import { Icon } from '../../models/abstract/icon.interface';
 
@@ -36,7 +36,7 @@ export class QuestionFormComponent implements OnInit {
   }
 
   public onSumbit(form: NgForm) {
-    const pregunta = new Question(form.value.title, form.value.desc, new Date(), form.value.icon);
+    const pregunta = new Question(undefined,form.value.title, form.value.desc, new Date(), form.value.icon);
     this.questionService.addQuestion(pregunta)
 
     
