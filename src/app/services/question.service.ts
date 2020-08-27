@@ -1,15 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Question } from '../models/question.model';
 import { environment } from '../../environments/environment';
 import urljoin from 'url-join';
 import { Parser } from '../resources/parser';
+import { Observable } from 'rxjs';
+import { map,catchError } from 'rxjs/operators'
+import { Router } from '@angular/router';
 
 @Injectable()
 
 export class QuestionService{
 
-    constructor(private htpp:HttpClient){}
+    constructor(private htpp:HttpClient,private router:Router){}
 
     public getQuestions():Promise<Question[]>{
         return new Promise((resolve,reject) => {
@@ -31,6 +34,16 @@ export class QuestionService{
                     reject(error);
                 });
         });
+    }
+
+    public addQuestion(question:Question):void{
+        const body = JSON.stringify(question);
+        const headers = new HttpHeaders({'Content-Type':'application/json'});
+        this.htpp.post(urljoin(environment.api_url,'questions','create'),body,{headers})
+           .subscribe(() => {
+               this.router.navigate(['/questions']);
+           })
+       
     }
 
 }
