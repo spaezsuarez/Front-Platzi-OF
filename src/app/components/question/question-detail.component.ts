@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 
 export class QuestionDetailComponent implements OnInit{
 
-    public pregunta:Question = null;
+    public pregunta:Question
 
     constructor(private questionService:QuestionService,private route:ActivatedRoute){}
 

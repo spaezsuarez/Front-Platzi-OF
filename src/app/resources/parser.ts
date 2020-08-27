@@ -1,4 +1,5 @@
 import  { Question }  from '../models/question.model';
+import { User } from '../models/user.model';
 
 export class Parser{
 
@@ -6,7 +7,9 @@ export class Parser{
         let pregunta:Question = null;
         pregunta = new Question(object.data.id,object.data.title,object.data.description,
                                 object.data.createdAt,object.data.icon);
-        console.table(pregunta);
+
+        pregunta.setUser(new User(object.data.user.firstName,object.data.user.lastName,
+                        object.data.user.email,object.data.user.password));
         return pregunta;
     }
 
