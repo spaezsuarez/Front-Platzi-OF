@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Answer } from '../../models/answer.mode';
 import { Question } from '../../models/question.model';
 import { User } from 'src/app/models/user.model';
+import { QuestionService } from '../../services/question.service';
 
 @Component({
     selector:'answer-form',
@@ -14,12 +15,12 @@ export class AnswerFormComponent{
 
     @Input() private pregunta:Question;
 
+    constructor(private questionService:QuestionService){}
+
     public onSumbit(form:NgForm){
-
-        const answer = new Answer(form.value.description,
-            this.pregunta,new Date(),new User('David','Suarez',null,null));
-
-        this.pregunta.getRespuestas().unshift(answer);
+        console.log(form.value.description);
+        const answer:Answer = new Answer(form.value.description,this.pregunta,undefined,undefined);
+        this.questionService.addAnswer(this.pregunta,answer);
         form.reset();
     }
 

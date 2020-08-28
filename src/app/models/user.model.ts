@@ -1,9 +1,9 @@
 export class User{
 
-    private email:String;
-    private password:String;
-    private firstName?:String;
-    private lastName?:String;
+    public email:String;
+    public password:String;
+    public firstName?:String;
+    public lastName?:String;
     
 
     constructor(firstName:String,lastName:String,email:String,password:String){

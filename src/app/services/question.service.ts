@@ -5,12 +5,21 @@ import { environment } from '../../environments/environment';
 import urljoin from 'url-join';
 import { Parser } from '../resources/parser';
 import { Router } from '@angular/router';
+import { Answer } from '../models/answer.mode';
+//Referencias componentes
+import { QuestionDetailComponent } from '../components/question/question-detail.component';
 
 @Injectable()
 
 export class QuestionService{
 
+    private answerFormReference:QuestionDetailComponent;
+
     constructor(private htpp:HttpClient,private router:Router){}
+
+    public setAnswerFormReference(component:QuestionDetailComponent):void{
+        this.answerFormReference = component;
+    }
 
     public getQuestions():Promise<Question[]>{
         return new Promise((resolve,reject) => {
@@ -42,6 +51,18 @@ export class QuestionService{
                this.router.navigate(['/questions']);
            })
        
+    }
+
+    public addAnswer(question:Question,answer:Answer):void{
+        const body = JSON.stringify(answer);
+        const headers = new HttpHeaders({'Content-Type':'application/json'});
+        this.htpp.post(urljoin(environment.api_url,'questions',''+question.getId(),'respuestas'),body,{headers})
+        .subscribe((response:any) => {
+            console.log(response);
+            this.answerFormReference.renderData();
+            this.router.navigate([`questions/${question.getId()}`]);
+        })
+
     }
 
 }

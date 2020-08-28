@@ -17,13 +17,29 @@ export class QuestionDetailComponent implements OnInit{
 
     public ngOnInit():void{
 
+        this.pregunta = new Question(undefined,undefined,undefined,undefined,undefined)
+
         let id;
         this.route.params.forEach((values) => {
             id = values.id;
-            console.log(id);
+        });
+        this.questionService.setAnswerFormReference(this);
+        this.questionService.getQuestion(id)
+            .then((data) => {
+                this.pregunta = data;
+            }).catch((error) => {
+                console.error(error);
+        });
+    }
+
+    public renderData():void{
+        let id;
+        this.route.params.forEach((values) => {
+            id = values.id;
         });
         this.questionService.getQuestion(id)
             .then((data) => {
+                //debugger;
                 this.pregunta = data;
             }).catch((error) => {
                 console.error(error);

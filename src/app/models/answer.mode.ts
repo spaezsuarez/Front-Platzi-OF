@@ -3,13 +3,13 @@ import { User } from './user.model';
 
 export class Answer{
 
-    private descripcion:String;
-    private pregunta:Question;
-    private createdAt:Date;
-    private user:User;
+    public description:String;
+    public pregunta:Question;
+    public createdAt:Date;
+    public user?:User;
 
     constructor(descipcion:String,pregunta:Question,createdAt:Date,user:User){
-        this.descripcion = descipcion;
+        this.description = descipcion;
         this.pregunta = pregunta;
         this.createdAt = createdAt;
         this.user = user;
@@ -17,7 +17,7 @@ export class Answer{
     }
 
     public getDescripcion():String{
-        return this.descripcion;
+        return this.description;
     }
 
     public getPregunta():Question{

@@ -39,7 +39,6 @@ export class QuestionListComponent implements OnInit {
   }
 
   public viewDetail(question:Question):void{
-    console.table(question);
     this.router.navigate([`/questions/${question.getId()}`]);
   }
 

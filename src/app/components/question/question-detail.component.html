@@ -1,19 +1,19 @@
 <mat-card>
     <mat-card-header>
       <div mat-card-avatar>
-        <i mat-list-icon class="{{pregunta.getIcon()}} icon" ></i>
+        <i mat-list-icon class="{{pregunta.icon}} icon" ></i>
       </div>
       <mat-card-title>
-          <h2>{{pregunta.getTitle()}}</h2>
+          <h2>{{pregunta.title}}</h2>
       </mat-card-title>
       <mat-card-subtitle>
-            <small>{{pregunta.getUser().getFullName()}} ~ {{pregunta.getCreatetionDate() | amLocale:'es' | amTimeAgo}}</small>
+            <small>{{pregunta.user}} ~ {{pregunta.createdAt | amLocale:'es' | amTimeAgo}}</small>
       </mat-card-subtitle>
     </mat-card-header>
 
     <mat-card-content>
         <p>
-            {{pregunta.getDescription()}}
+            {{pregunta.description}}
         </p>
     </mat-card-content>
 
@@ -27,12 +27,12 @@
         Respuestas
     </h3>
     <ul class="answers-list" *ngIf = "pregunta.getRespuestas().length > 0" >
-        <li *ngFor="let respuesta of pregunta.getRespuestas()">
-            <h5>{{respuesta.getUser().getFullName()}} ~
-                <small>{{respuesta.getCreateDate() | amLocale:'es' | amTimeAgo}}</small>
+        <li *ngFor="let respuesta of pregunta.respuestas">
+            <h5>{{respuesta.user.firstName}} {{respuesta.user.lastName}} ~
+                <small>{{respuesta.createdAt | amLocale:'es' | amTimeAgo}}</small>
             </h5>
             <p class="description">
-                {{respuesta.getDescripcion()}}
+                {{respuesta.description}}
             </p>
         </li>
 

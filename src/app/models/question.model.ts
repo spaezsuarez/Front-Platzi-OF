@@ -3,13 +3,13 @@ import  { User }  from './user.model';
 
 export class  Question{
 
-    private id?:number;
-    private title:String;
-    private description:String;
-    private createdAt:Date;
-    private icon:String;
-    private user:User;
-    private respuestas:Answer[];
+    public id?:number;
+    public title:String;
+    public description:String;
+    public createdAt:Date;
+    public icon:String;
+    public user:User;
+    public respuestas:Answer[];
 
     public getId():number{
         return this.id;
@@ -50,5 +50,10 @@ export class  Question{
 
     public setUser(user:User):void{
         this.user = user;
+    }
+
+    public setRespuestas(respuesta:Answer[]):void{
+        console.log(respuesta);
+        this.respuestas = respuesta;
     }
 }

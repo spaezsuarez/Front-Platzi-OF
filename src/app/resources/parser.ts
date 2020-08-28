@@ -1,5 +1,6 @@
 import  { Question }  from '../models/question.model';
 import { User } from '../models/user.model';
+import { Answer } from '../models/answer.mode';
 
 export class Parser{
 
@@ -10,6 +11,9 @@ export class Parser{
 
         pregunta.setUser(new User(object.data.user.firstName,object.data.user.lastName,
                         object.data.user.email,object.data.user.password));
+
+        pregunta.setRespuestas(this.toArrayAnswers(object.data.respuestas));
+
         return pregunta;
     }
 
@@ -26,5 +30,18 @@ export class Parser{
         }
        
         return preguntas; 
+    }
+
+    public static toArrayAnswers(list:any):Answer[]{
+        let respuesta:Answer = null;
+        let respuestas:Answer[] = [];
+
+        for(let i=0; i<list.length; i++){
+            respuesta = new Answer(list[i].description,list[i].pregunta,list[i].createdAt,list[i].user);
+            respuestas.unshift(respuesta);
+        }
+
+        return respuestas;
+
     }
 }
