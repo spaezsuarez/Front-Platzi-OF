@@ -28,6 +28,15 @@ export class AuthService{
             });
     }
 
+    public register(user:User):void{
+        const body = JSON.stringify(user);
+        const headers = new HttpHeaders({'Content-Type':'application/json'});
+        this.htpp.post(urljoin(environment.api_url,'auth','register'),body,{headers})
+            .subscribe((response:any) => {
+                this.login(response.info);
+            })
+    }   
+
     private saveStorage({token,userId,firstName,lastName,email}):void{
         this.currentUser = new User(userId,firstName,lastName,email,undefined);
         localStorage.setItem('token',token);

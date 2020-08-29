@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { User } from '../../models/user.model';
+import { AuthService } from '../../services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -10,6 +12,8 @@ import { User } from '../../models/user.model';
 export class RegisterComponent implements OnInit {
 
   formulario:FormGroup;
+
+  constructor(private authService:AuthService){}
 
   public ngOnInit():void{
     this.formulario = new FormGroup({
@@ -23,7 +27,6 @@ export class RegisterComponent implements OnInit {
       lastName:new FormControl(null,[Validators.required])
     });
 
-    this.clearForm();
   }
 
   public clearForm():void{
@@ -40,8 +43,12 @@ export class RegisterComponent implements OnInit {
       const {email,password,firstName,lastName,passwordDos } = this.formulario.value;
       if(password === passwordDos){
         const user = new User(undefined,firstName,lastName,email,password);
+        this.authService.register(user);
       }else{
+        Swal.fire('Error','Las contraseñas deben coincidir','error');
       }
+    }else{
+      Swal.fire('Opps','Los campos deben estar diligenciados','error');
     }
   }
 
