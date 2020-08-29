@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
     if(this.formulario.valid){
       const {email,password,firstName,lastName,passwordDos } = this.formulario.value;
       if(password === passwordDos){
-        const user = new User(firstName,lastName,email,password);
+        const user = new User(undefined,firstName,lastName,email,password);
         console.table(user);
       }else{
         console.error('Los campos no coinciden');

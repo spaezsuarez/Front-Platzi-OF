@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl,Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,7 @@ export class LoginComponent implements OnInit {
 
   private formulario:FormGroup;
 
-  constructor() { }
+  constructor(private authService:AuthService) { }
 
   public ngOnInit(): void {
     this.formulario = new FormGroup({
@@ -21,7 +23,10 @@ export class LoginComponent implements OnInit {
   }
 
   public onSumbit():void{
-
+    if(this.formulario.valid){
+      const user = new User(undefined,undefined,undefined,this.formulario.value.email,this.formulario.value.password);
+      this.authService.login(user);
+    }
   }
 
   public getForm():FormGroup{

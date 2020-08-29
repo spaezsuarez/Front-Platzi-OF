@@ -19,6 +19,7 @@ import { QuestionListComponent } from './components/question-list/question-list.
 import { QuestionFormComponent } from './components/question-form/question-form.component';
 //Servicios
 import { QuestionService } from './services/question.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { QuestionService } from './services/question.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [QuestionService],
+  providers: [QuestionService,AuthService],
   bootstrap: [AppComponent]
 })
 

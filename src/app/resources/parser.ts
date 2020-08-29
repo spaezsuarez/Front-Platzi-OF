@@ -9,8 +9,11 @@ export class Parser{
         pregunta = new Question(object.data.id,object.data.title,object.data.description,
                                 object.data.createdAt,object.data.icon);
 
-        pregunta.setUser(new User(object.data.user.firstName,object.data.user.lastName,
-                        object.data.user.email,object.data.user.password));
+        const user = new User(object.data.id,object.data.user.firstName,
+                              object.data.user.lastName,object.data.user.email,
+                              object.data.user.password);
+                              
+        pregunta.setUser(user);
 
         pregunta.setRespuestas(this.toArrayAnswers(object.data.respuestas));
 

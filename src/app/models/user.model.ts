@@ -4,9 +4,11 @@ export class User{
     public password:String;
     public firstName?:String;
     public lastName?:String;
+    public id?:number
     
 
-    constructor(firstName:String,lastName:String,email:String,password:String){
+    constructor(id:number,firstName:String,lastName:String,email:String,password:String){
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
