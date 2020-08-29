@@ -22,6 +22,17 @@ export class RegisterComponent implements OnInit {
       firstName:new FormControl(null,[Validators.required]),
       lastName:new FormControl(null,[Validators.required])
     });
+
+    this.clearForm();
+  }
+
+  public clearForm():void{
+    /*this.formulario.value.email = "";
+    this.formulario.value.password = "";
+    this.formulario.value.firstName = "";
+    this.formulario.value.lastName = "";
+    this.formulario.value.passwordDos = "";*/
+    this.formulario.reset();
   }
 
   public onSumbit():void{
@@ -29,9 +40,7 @@ export class RegisterComponent implements OnInit {
       const {email,password,firstName,lastName,passwordDos } = this.formulario.value;
       if(password === passwordDos){
         const user = new User(undefined,firstName,lastName,email,password);
-        console.table(user);
       }else{
-        console.error('Los campos no coinciden');
       }
     }
   }

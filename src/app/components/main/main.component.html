@@ -1,0 +1,25 @@
+<mat-toolbar color="primary">
+    <span (click)="redirect()">OverFlow</span>
+    <span class="space"></span>
+    <div *ngIf="getService().isLoggedIn()">
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <div class="container">
+          <button mat-menu-item disabled>{{getService().getCurrentUser().firstName}} {{getService().getCurrentUser().lastName}}</button>
+          <button mat-menu-item disabled>{{getService().getCurrentUser().email}}</button>
+        </div>
+        <button mat-menu-item>Settings</button>
+        <button mat-menu-item (click)="logout()">Logout</button>
+      </mat-menu>
+    </div>
+    <div *ngIf="getService().isLoggedIn() === false" >
+      <button mat-icon-button routerLink="/login">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+    </div>
+</mat-toolbar>
+  
+<router-outlet></router-outlet>
+  

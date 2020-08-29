@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl,Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { User } from 'src/app/models/user.model';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-login',
@@ -26,6 +27,8 @@ export class LoginComponent implements OnInit {
     if(this.formulario.valid){
       const user = new User(undefined,undefined,undefined,this.formulario.value.email,this.formulario.value.password);
       this.authService.login(user);
+    }else{
+      Swal.fire('Oops','Los campos no pueden estar vacios',"error");
     }
   }
 

@@ -20,7 +20,6 @@ export class AuthService{
 
     public login(user:User):void{
         const body = JSON.stringify(user);
-        console.log(body);
         const headers = new HttpHeaders({'Content-Type':'application/json'});
         this.htpp.post(urljoin(environment.api_url,'auth','login'),body,{headers})
             .subscribe((response:any) => {
@@ -31,13 +30,18 @@ export class AuthService{
 
     private saveStorage({token,userId,firstName,lastName,email}):void{
         this.currentUser = new User(userId,firstName,lastName,email,undefined);
-        console.log(token);
         localStorage.setItem('token',token);
         localStorage.setItem('user',JSON.stringify({userId,firstName,lastName,email}));
     }
 
-    private isLoggedIn():any{
+    public isLoggedIn():boolean{
         return localStorage.getItem('token') !== null;
+    }
+
+    public logout():void{
+        localStorage.clear();
+        this.currentUser = null;
+        this.router.navigate(['/']);
     }
 
     public getCurrentUser():User{

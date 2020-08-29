@@ -20,6 +20,7 @@ import { QuestionFormComponent } from './components/question-form/question-form.
 //Servicios
 import { QuestionService } from './services/question.service';
 import { AuthService } from './services/auth.service';
+import { MainComponent } from './components/main/main.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AuthService } from './services/auth.service';
     RegisterComponent,
     LoginComponent,
     QuestionListComponent,
-    QuestionFormComponent
+    QuestionFormComponent,
+    MainComponent
     
   ],
   imports: [

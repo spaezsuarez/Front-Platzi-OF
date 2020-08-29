@@ -53,7 +53,6 @@ export class  Question{
     }
 
     public setRespuestas(respuesta:Answer[]):void{
-        console.log(respuesta);
         this.respuestas = respuesta;
     }
 }

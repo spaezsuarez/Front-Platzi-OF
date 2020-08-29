@@ -58,7 +58,6 @@ export class QuestionService{
         const headers = new HttpHeaders({'Content-Type':'application/json'});
         this.htpp.post(urljoin(environment.api_url,'questions',''+question.getId(),'respuestas'),body,{headers})
         .subscribe((response:any) => {
-            console.log(response);
             this.answerFormReference.renderData();
             this.router.navigate([`questions/${question.getId()}`]);
         })

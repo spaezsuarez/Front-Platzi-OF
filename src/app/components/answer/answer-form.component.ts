@@ -18,7 +18,6 @@ export class AnswerFormComponent{
     constructor(private questionService:QuestionService){}
 
     public onSumbit(form:NgForm){
-        console.log(form.value.description);
         const answer:Answer = new Answer(form.value.description,this.pregunta,undefined,undefined);
         this.questionService.addAnswer(this.pregunta,answer);
         form.reset();
