@@ -24,8 +24,8 @@ export class QuestionService{
     public getQuestions():Promise<Question[]>{
         return new Promise((resolve,reject) => {
             this.htpp.get(urljoin(environment.api_url,'questions')).toPromise()
-                .then((response) => {
-                    resolve(Parser.toArrayQuestions(response));
+                .then((response:any) => {
+                    resolve(Parser.toArrayQuestions(response.data));
                 }).catch((error) => {
                     reject(error);
                 });

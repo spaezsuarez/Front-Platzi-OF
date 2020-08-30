@@ -24,10 +24,10 @@ export class Parser{
         let pregunta:Question = null;
         let preguntas:Question[] = [];
 
-        for(let i=0; i <list.questions.length; i++){
+        for(let i=0; i <list.length; i++){
 
-            pregunta = new Question(list.questions[i].id,list.questions[i].title,list.questions[i].description,
-                                    list.questions[i].createdAt,list.questions[i].icon);
+            pregunta = new Question(list[i].id,list[i].title,list[i].description,
+                                    list[i].createdAt,list[i].icon);
 
             preguntas.unshift(pregunta);
         }
