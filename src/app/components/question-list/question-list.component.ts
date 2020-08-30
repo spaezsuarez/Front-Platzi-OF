@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Question } from '../../models/question.model';
 import { QuestionService } from '../../services/question.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-question-list',
@@ -13,7 +14,8 @@ export class QuestionListComponent implements OnInit {
   private questions: Question[];
   private loading:boolean = true;
 
-  constructor(private questionService:QuestionService,private router:Router) { }
+  constructor(private questionService:QuestionService,private router:Router,
+              private authService:AuthService) { }
 
   public setQuestions():void{
     this.questionService.getQuestions()
@@ -39,7 +41,11 @@ export class QuestionListComponent implements OnInit {
   }
 
   public viewDetail(question:Question):void{
-    this.router.navigate([`/questions/${question.getId()}`]);
+    if(this.authService.isLoggedIn()){
+      this.router.navigate([`/questions/${question.getId()}`]);
+    }else{
+      this.router.navigate(['/register']);
+    }
   }
 
 }

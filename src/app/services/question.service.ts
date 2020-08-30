@@ -46,7 +46,9 @@ export class QuestionService{
     public addQuestion(question:Question):void{
         const body = JSON.stringify(question);
         const headers = new HttpHeaders({'Content-Type':'application/json'});
-        this.htpp.post(urljoin(environment.api_url,'questions','create'),body,{headers})
+        const token = `?token=${localStorage.getItem('token')}`;
+
+        this.htpp.post(urljoin(environment.api_url,'questions','create',token),body,{headers})
            .subscribe(() => {
                this.router.navigate(['/questions']);
            })
@@ -56,7 +58,10 @@ export class QuestionService{
     public addAnswer(question:Question,answer:Answer):void{
         const body = JSON.stringify(answer);
         const headers = new HttpHeaders({'Content-Type':'application/json'});
-        this.htpp.post(urljoin(environment.api_url,'questions',''+question.getId(),'respuestas'),body,{headers})
+        const token = `?token=${localStorage.getItem('token')}`;
+        
+        this.htpp.post(urljoin(environment.api_url,'questions',`${question.getId()}`,'respuestas',token)
+        ,body,{headers})
         .subscribe((response:any) => {
             this.answerFormReference.renderData();
             this.router.navigate([`questions/${question.getId()}`]);
