@@ -5,14 +5,14 @@
         </div>
         <div *ngFor="let q of getQuestions()" (click)="viewDetail(q)">
             <mat-list-item >
-                <mat-icon mat-list-icon *ngIf="q.getIcon() === null" class="material-icons icon">perm_scan_wifi
+                <mat-icon mat-list-icon *ngIf="q.icon === null" class="material-icons icon">perm_scan_wifi
                 </mat-icon>
-                <mat-icon mat-list-icon *ngIf="q.getIcon() !== null" class="{{q.getIcon()}} icon">
+                <mat-icon mat-list-icon *ngIf="q.icon !== null" class="{{q.icon}} icon">
                 </mat-icon>
                 <div mat-line>{{q.getTitle()}}</div>
                 <div mat-line>
-                    <p>{{q.getRespuestas().length}} respuestas ~
-                        {{q.getCreatetionDate() | amLocale:'es' | amTimeAgo}}</p>
+                    <p>{{q.respuestas.length}} respuestas ~
+                        {{q.createdAt | amLocale:'es' | amTimeAgo}}</p>
                 </div>
             </mat-list-item>
             <button mat-fab color="accent" class="btn">+</button>

@@ -6,17 +6,14 @@ export class Parser{
 
     public static toQuestion(object:any):Question{
         let pregunta:Question = null;
-        pregunta = new Question(object.data.id,object.data.title,object.data.description,
-                                object.data.createdAt,object.data.icon);
+        pregunta = new Question(object._id,object.title,object.description,object.createdAt,object.icon);
 
-        const user = new User(object.data.id,object.data.user.firstName,
+        /*const user = new User(object.data.id,object.data.user.firstName,
                               object.data.user.lastName,object.data.user.email,
-                              object.data.user.password);
+                              object.data.user.password);*/
                               
-        pregunta.setUser(user);
-
-        pregunta.setRespuestas(this.toArrayAnswers(object.data.respuestas));
-
+        pregunta.setUser(undefined);
+        pregunta.setRespuestas(this.toArrayAnswers(object.answers));
         return pregunta;
     }
 
@@ -26,7 +23,7 @@ export class Parser{
 
         for(let i=0; i <list.length; i++){
 
-            pregunta = new Question(list[i].id,list[i].title,list[i].description,
+            pregunta = new Question(list[i]._id,list[i].title,list[i].description,
                                     list[i].createdAt,list[i].icon);
 
             preguntas.unshift(pregunta);

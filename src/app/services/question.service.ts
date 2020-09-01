@@ -25,7 +25,7 @@ export class QuestionService{
         return new Promise((resolve,reject) => {
             this.htpp.get(urljoin(environment.api_url,'questions')).toPromise()
                 .then((response:any) => {
-                    resolve(Parser.toArrayQuestions(response.data));
+                    resolve(Parser.toArrayQuestions(response.info.data));
                 }).catch((error) => {
                     reject(error);
                 });
@@ -35,8 +35,8 @@ export class QuestionService{
     public getQuestion(id:any):Promise<Question>{
         return new Promise((resolve,reject) => {
             this.htpp.get(urljoin(environment.api_url,'questions','detail',id)).toPromise()
-                .then((data) => {
-                    resolve(Parser.toQuestion(data));
+                .then((response:any) => {
+                    resolve(Parser.toQuestion(response.info.data));
                 }).catch((error) => {
                     reject(error);
                 });

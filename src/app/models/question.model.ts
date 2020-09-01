@@ -3,7 +3,7 @@ import  { User }  from './user.model';
 
 export class  Question{
 
-    public id?:number;
+    public _id?:number;
     public title:String;
     public description:String;
     public createdAt:Date;
@@ -12,7 +12,7 @@ export class  Question{
     public respuestas:Answer[];
 
     public getId():number{
-        return this.id;
+        return this._id;
     }
 
     public getTitle():String{
@@ -40,7 +40,7 @@ export class  Question{
     }
 
     constructor(id:number,title:String,description:String,createdAt:Date,icon:String){
-        this.id = id;
+        this._id = id;
         this.title = title;
         this.description = description;
         this.createdAt = createdAt;
