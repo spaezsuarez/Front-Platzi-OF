@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Question }   from '../../models/question.model';
 import icons from '../../resources/icons';
 import { Icon } from '../../models/abstract/icon.interface';
-
+import { Parser } from '../../resources/parser';
 import { QuestionService } from '../../services/question.service';
 
 @Component({
@@ -36,7 +36,11 @@ export class QuestionFormComponent implements OnInit {
   }
 
   public onSumbit(form: NgForm) {
+    const currentUser:any = JSON.parse(localStorage.getItem('user'));
+
     const pregunta = new Question(undefined,form.value.title, form.value.desc, new Date(), form.value.icon);
+    pregunta.setUser(Parser.toUser(currentUser));
+    
     this.questionService.addQuestion(pregunta)
 
     

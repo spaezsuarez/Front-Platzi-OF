@@ -45,6 +45,7 @@ export class QuestionService{
 
     public addQuestion(question:Question):void{
         const body = JSON.stringify(question);
+        console.log(body);
         const headers = new HttpHeaders({'Content-Type':'application/json'});
         const token = `?token=${localStorage.getItem('token')}`;
 

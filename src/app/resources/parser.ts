@@ -12,7 +12,7 @@ export class Parser{
                               object.data.user.lastName,object.data.user.email,
                               object.data.user.password);*/
                               
-        pregunta.setUser(undefined);
+        //pregunta.setUser(undefined);
         pregunta.setRespuestas(this.toArrayAnswers(object.answers));
         return pregunta;
     }
@@ -43,5 +43,13 @@ export class Parser{
 
         return respuestas;
 
+    }
+
+    public static toUser(object:any):User{
+        let pregunta:User = null;
+
+        pregunta = new User(object.userId,object.firstName,object.lastName,object.email,object.password);
+
+        return pregunta;
     }
 }
