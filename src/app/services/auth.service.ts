@@ -4,6 +4,8 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 import urljoin from 'url-join';
 import { User } from '../models/user.model';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+import { report } from 'process';
 
 @Injectable()
 
@@ -32,8 +34,9 @@ export class AuthService{
         const body = JSON.stringify(user);
         const headers = new HttpHeaders({'Content-Type':'application/json'});
         this.htpp.post(urljoin(environment.api_url,'auth','register'),body,{headers})
-            .subscribe((response:any) => {
-                this.login(response.info);
+            .subscribe(async (response:any) => {
+                Swal.fire('Yeah',`Registro exitoso `,'success');
+                this.router.navigate(['/login']);
             })
     }   
 
