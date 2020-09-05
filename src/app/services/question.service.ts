@@ -45,7 +45,6 @@ export class QuestionService{
 
     public addQuestion(question:Question):void{
         const body = JSON.stringify(question);
-        console.log(body);
         const headers = new HttpHeaders({'Content-Type':'application/json'});
         const token = `?token=${localStorage.getItem('token')}`;
 
@@ -63,9 +62,13 @@ export class QuestionService{
         
         this.htpp.post(urljoin(environment.api_url,'questions',`${question.getId()}`,'respuestas',token)
         ,body,{headers})
-        .subscribe((response:any) => {
+        .subscribe(() => {
             this.answerFormReference.renderData();
-            this.router.navigate([`questions/${question.getId()}`]);
+            this.getQuestion(question.getId())
+                .then(() => {
+                    this.router.navigate([`questions/${question.getId()}`]);
+                });
+            
         })
 
     }

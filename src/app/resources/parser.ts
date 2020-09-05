@@ -7,12 +7,11 @@ export class Parser{
     public static toQuestion(object:any):Question{
         let pregunta:Question = null;
         pregunta = new Question(object._id,object.title,object.description,object.createdAt,object.icon);
-
-        /*const user = new User(object.data.id,object.data.user.firstName,
-                              object.data.user.lastName,object.data.user.email,
-                              object.data.user.password);*/
+        const user = new User(object.user._id,object.user.firstName,
+                              object.user.lastName,object.user.email,
+                              object.user.password);
                               
-        //pregunta.setUser(undefined);
+        pregunta.setUser(user);
         pregunta.setRespuestas(this.toArrayAnswers(object.answers));
         return pregunta;
     }

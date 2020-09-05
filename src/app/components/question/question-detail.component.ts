@@ -2,6 +2,7 @@ import { Component , OnInit } from '@angular/core';
 import { Question }  from '../../models/question.model';
 import { QuestionService } from '../../services/question.service';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
     selector:'app-question-detail',
@@ -13,7 +14,8 @@ export class QuestionDetailComponent implements OnInit{
 
     public pregunta:Question
 
-    constructor(private questionService:QuestionService,private route:ActivatedRoute){}
+    constructor(private questionService:QuestionService,private route:ActivatedRoute,
+                private router:Router){}
 
     public ngOnInit():void{
 
@@ -41,6 +43,7 @@ export class QuestionDetailComponent implements OnInit{
             .then((data) => {
                 //debugger;
                 this.pregunta = data;
+                this.router.navigate([`questions/${data.getId()}`]);
             }).catch((error) => {
                 console.error(error);
         });
