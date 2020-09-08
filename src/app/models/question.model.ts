@@ -52,7 +52,7 @@ export class  Question{
         this.user = user;
     }
 
-    public setRespuestas(respuesta:Answer[]):void{
+    public setRespuestas(respuesta:any[]):void{
         this.respuestas = respuesta;
     }
 }

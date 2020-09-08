@@ -5,7 +5,7 @@ import urljoin from 'url-join';
 import { User } from '../models/user.model';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { report } from 'process';
+import { promise } from 'protractor';
 
 @Injectable()
 
@@ -58,6 +58,20 @@ export class AuthService{
 
     public getCurrentUser():User{
         return this.currentUser;
+    }
+
+    public async getUserName(id):Promise<any>{
+
+        const userId = `?id=${id}`;
+        return new Promise((resolve,reject) => {
+            this.htpp.get(urljoin(environment.api_url,'auth','name',userId))
+            .toPromise()
+            .then((response:any) => {
+                resolve(response.info.name);
+            }).catch((error) => {
+                reject(error.info.name);
+            });
+        });
     }
 
 }

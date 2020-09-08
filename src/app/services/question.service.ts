@@ -66,7 +66,12 @@ export class QuestionService{
             this.answerFormReference.renderData();
             this.getQuestion(question.getId())
                 .then(() => {
-                    this.router.navigate([`questions/${question.getId()}`]);
+                    this.router.navigate(['questions']);
+                    setTimeout(() => {
+                        this.router.navigate([`questions/${question.getId()}`]);
+                    },100);
+                }).catch((error) => {
+                    console.log(error);
                 });
             
         })

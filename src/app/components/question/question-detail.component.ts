@@ -1,6 +1,7 @@
 import { Component , OnInit } from '@angular/core';
 import { Question }  from '../../models/question.model';
 import { QuestionService } from '../../services/question.service';
+import { AuthService } from '../../services/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 
@@ -15,7 +16,7 @@ export class QuestionDetailComponent implements OnInit{
     public pregunta:Question
 
     constructor(private questionService:QuestionService,private route:ActivatedRoute,
-                private router:Router){}
+                private router:Router,private authService:AuthService){}
 
     public ngOnInit():void{
 
@@ -52,6 +53,7 @@ export class QuestionDetailComponent implements OnInit{
     public getIconClass():String{
         return this.pregunta.getIcon();
     }
+
 
     
 }

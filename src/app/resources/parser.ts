@@ -25,6 +25,8 @@ export class Parser{
             pregunta = new Question(list[i]._id,list[i].title,list[i].description,
                                     list[i].createdAt,list[i].icon);
 
+            pregunta.setRespuestas(list[i].answers);
+
             preguntas.unshift(pregunta);
         }
        
