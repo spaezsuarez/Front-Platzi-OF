@@ -69,7 +69,7 @@ export class QuestionService{
                     this.router.navigate(['questions']);
                     setTimeout(() => {
                         this.router.navigate([`questions/${question.getId()}`]);
-                    },100);
+                    },50);
                 }).catch((error) => {
                     console.log(error);
                 });
